@@ -21,17 +21,17 @@ const PlaceForm = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    margin: 10,
     gap: 5,
   },
   input: {
-    borderWidth: 1,
-    borderColor: "gray",
     borderRadius: 5,
-    fontSize: 14,
-    paddingVertical: 4,
+    fontSize: 16,
+    paddingVertical: 6,
     paddingHorizontal: 8,
-    backgroundColor: "white",
+    backgroundColor: "purple",
+    color: "white",
+    textDecorationLine: "none",
   },
 });
 export default PlaceForm;

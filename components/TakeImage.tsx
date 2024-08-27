@@ -22,7 +22,7 @@ const TakeImage = () => {
     if (cameraPermissionInformation?.status == PermissionStatus.DENIED) {
       Alert.alert(
         "Insufficient Permissions!",
-        "You need to grant camer permission."
+        "You need to grant camera permission."
       );
       return false;
     }
@@ -33,12 +33,11 @@ const TakeImage = () => {
     if (!permission) {
       return;
     }
-    const image: ImagePickerResult | ImagePickerSuccessResult =
-      await launchCameraAsync({
-        allowsEditing: true,
-        aspect: [16, 9],
-        quality: 0.5,
-      });
+    const image = await launchCameraAsync({
+      allowsEditing: true,
+      aspect: [16, 9],
+      quality: 0.5,
+    });
     setPickedImage(image.assets[0].uri);
   };
   return (
