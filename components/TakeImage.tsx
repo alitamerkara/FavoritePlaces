@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { View, Button, Alert, Image, StyleSheet, Text } from "react-native";
 
-const TakeImage = () => {
+const TakeImage = ({ setPickPhoto }) => {
   const [pickedImage, setPickedImage] = useState<string | null>("");
 
   const [cameraPermissionInformation, requestPermission] =
@@ -39,6 +39,7 @@ const TakeImage = () => {
       quality: 0.5,
     });
     setPickedImage(image.assets[0].uri);
+    setPickPhoto(image.assets[0].uri);
   };
   return (
     <View style={styles.container}>

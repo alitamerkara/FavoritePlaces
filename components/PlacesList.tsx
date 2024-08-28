@@ -1,7 +1,14 @@
-import { Text } from "react-native";
+import { FlatList, Text } from "react-native";
+import PlaceItem from "./PlaceItem";
 
-const PlacesList = () => {
-  return <Text>PlacesList</Text>;
+const PlacesList = ({ currentData }) => {
+  return (
+    <FlatList
+      data={currentData}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => <PlaceItem item={item} />}
+    />
+  );
 };
 
 export default PlacesList;

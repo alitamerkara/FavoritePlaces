@@ -1,11 +1,48 @@
-import { useState } from "react";
-import { ScrollView, Text, TextInput, View, StyleSheet } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+  StyleSheet,
+  Button,
+} from "react-native";
+import TakeImage from "./TakeImage";
+import TakeLocation from "./TakeLocation";
 
-const PlaceForm = () => {
-  const [title, setTitle] = useState("");
+type datas = {
+  id?: number;
+  title?: string;
+  image?: string;
+  adress?: string;
+};
+
+const PlaceForm = ({ navigation }) => {
+  const [title, setTitle] = useState<string>("");
+  const [pickPhoto, setPickPhoto] = useState<string>("");
+  const [adress, setAdress] = useState<string>("");
+  const [datas, setDatas] = useState<datas[]>([]);
   const changeTitle = (value: string): void => {
     setTitle(value);
   };
+  const handlePress = () => {
+    setDatas([
+      ...datas,
+      {
+        number: Math.floor(Math.random() * 9999),
+        title: title,
+        image: pickPhoto,
+        adress: adress,
+      },
+    ]);
+  };
+  useEffect(() => {
+    if (datas.length > 0) {
+      navigation.navigate("AllPlaces", {
+        datas: datas,
+      });
+    }
+  }, [datas]);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -16,6 +53,9 @@ const PlaceForm = () => {
           onChangeText={changeTitle}
         />
       </View>
+      <TakeImage setPickPhoto={setPickPhoto} />
+      <TakeLocation setAdress={setAdress} />
+      <Button onPress={handlePress} title="Add Place" />
     </ScrollView>
   );
 };
