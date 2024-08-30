@@ -14,30 +14,27 @@ type datas = {
   id?: number;
   title?: string;
   image?: string;
-  adress?: string;
+  address?: string;
 };
 
 const PlaceForm = ({ navigation }) => {
   const [title, setTitle] = useState<string>("");
   const [pickPhoto, setPickPhoto] = useState<string>("");
-  const [adress, setAdress] = useState<string>("");
-  const [datas, setDatas] = useState<datas[]>([]);
+  const [address, setaddress] = useState<string>("");
+  const [datas, setDatas] = useState<datas>();
   const changeTitle = (value: string): void => {
     setTitle(value);
   };
   const handlePress = () => {
-    setDatas([
-      ...datas,
-      {
-        number: Math.floor(Math.random() * 9999),
-        title: title,
-        image: pickPhoto,
-        adress: adress,
-      },
-    ]);
+    setDatas({
+      id: Math.floor(Math.random() * 9999),
+      title: title,
+      image: pickPhoto,
+      address: address,
+    });
   };
   useEffect(() => {
-    if (datas.length > 0) {
+    if (datas) {
       navigation.navigate("AllPlaces", {
         datas: datas,
       });
@@ -54,7 +51,7 @@ const PlaceForm = ({ navigation }) => {
         />
       </View>
       <TakeImage setPickPhoto={setPickPhoto} />
-      <TakeLocation setAdress={setAdress} />
+      <TakeLocation setaddress={setaddress} />
       <Button onPress={handlePress} title="Add Place" />
     </ScrollView>
   );

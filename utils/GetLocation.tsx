@@ -6,14 +6,13 @@ export const GetLocation = (lat: number, lng: number) => {
 &key=${API_KEY}`;
   return MAP_URL;
 };
-export const SwitchAdress = async (lat: number, lng: number) => {
-  const ADRESS_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_KEY}`;
-  const response: any = await fetch(ADRESS_URL);
+export const Switchaddress = async (lat: number, lng: number) => {
+  const address_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_KEY}`;
+  const response: any = await fetch(address_URL);
   if (!response.ok) {
-    throw new Error("Failed the fetch adress!");
+    throw new Error("Failed the fetch address!");
   }
   const data = await response.json();
-  const adress = data.results[0].formatted_address;
-  console.log(adress);
-  return adress;
+  const address = data.results[0].formatted_address;
+  return address;
 };

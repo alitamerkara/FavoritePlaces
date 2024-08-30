@@ -5,14 +5,14 @@ import {
 } from "expo-location";
 import { useEffect, useState } from "react";
 import { View, StyleSheet, Button, Alert, Image, Text } from "react-native";
-import { GetLocation, SwitchAdress } from "../utils/GetLocation";
+import { GetLocation, Switchaddress } from "../utils/GetLocation";
 import {
   useIsFocused,
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
 
-const TakeLocation = ({ setAdress }) => {
+const TakeLocation = ({ setaddress }) => {
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
   const [pickLocation, setPickLocation] = useState<{
@@ -64,8 +64,8 @@ const TakeLocation = ({ setAdress }) => {
           lat: latitude,
           lng: longitude,
         });
-        const currentAdress = await SwitchAdress(latitude, longitude);
-        setAdress(currentAdress);
+        const currentaddress = await Switchaddress(latitude, longitude);
+        setaddress(currentaddress);
       }
     };
     loc();

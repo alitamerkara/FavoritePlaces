@@ -7,7 +7,7 @@ const PlaceItem = ({ item }) => {
       <Image style={styles.image} source={{ uri: item.image }} />
       <View style={styles.textContainer}>
         <Text style={styles.textTitle}>{item.title}</Text>
-        <Text style={styles.text}>{item.adress}</Text>
+        <Text style={styles.text}>{item.address}</Text>
       </View>
     </View>
   );
